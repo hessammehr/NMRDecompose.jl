@@ -20,14 +20,10 @@ macro binary_opt(expr, param, min, max, δ)
     end)
 end
 
-macro setit(sym,v)
-    :($(esc(sym)) = $v)
-end
-
 """Returns the location and values of local maxima in `signal`."""
 function local_maxima(signal::AbstractArray{T}) where T
     l = length(signal)
-    res = Tuple{Int, T}()
+    res = Tuple{Int, T}[]
     if l < 3
         return res
     end
